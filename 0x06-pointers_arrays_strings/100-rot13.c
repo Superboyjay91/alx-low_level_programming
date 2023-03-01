@@ -1,20 +1,27 @@
 #include "main.h"
 
 /**
- * rot13 - shift all values in 13 places ahead
+ * rot13 - encodes a string into rot13
+ * @s: string to encode
  *
- * @rot: return the values in 13 place value
- * Return: return the value as coded
+ * Return: address of s
  */
-
-char *rot13(char *rot)
+char *rot13(char *s)
 {
-	int i;
+	int i, j;
+	char a[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char b[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
-	for (i = 0; rot[i] >= 65 && rot[i] <= 90; i++)
+	for (i = 0; *(s + i); i++)
 	{
-		rot[i] = rot[i] + 13;
-		rot[i]++;
+		for (j = 0; j < 52; j++)
+		{
+			if (a[j] == *(s + i))
+			{
+				*(s + i) = b[j];
+				break;
+			}
+		}
 	}
-	return (rot);
+	return (s);
 }
