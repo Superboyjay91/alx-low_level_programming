@@ -7,10 +7,11 @@
  * Return: return the square root of users number
  */
 
-int _sqrt_recursion(int n)
+int _sqrt(int n, int x)
 {
-	if (n == 0 || n == 1)
+	if (n > x / 2)
+		return (-1);
+	else if (n * n == x)
 		return (n);
-	return (_sqrt(0, n));
+	return (_sqrt(n + 1, x));
 }
-
